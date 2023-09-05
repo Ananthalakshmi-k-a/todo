@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container">
+        <table class="table table-striped m-2">
+            <tr>
+                <th>IMAGE</th>
+                <th>NAME</th>
+                <th>DEPARTMENT</th>
+                <th>SALARY</th>
+                <th>EMAIL</th>
+                <th>ACTION</th>
+            </tr>
+            {%for emp in employees%}
+            <tr>
+                <td>
+                    {%if emp.profile_pic%}
+                    <img class="" src="{{emp.profile_pic.url}} " alt="" width="100%" height="170px">
+                    {%endif%}
+                </td>
+                <td>{{emp.name}}</td>
+                <td>{{emp.department}}</td>
+                <td>{{emp.salary}}</td>
+                <td>{{emp.email}}</td>
+                <td>
+                    
+                    <a href="{%url 'emp-detail' emp.id%}" class="btn btn-outline-info">View</a>
+                    <a href="{%url 'emp-edit' emp.id%} " class="btn btn-outline-danger">Edit</a>
+                </td>
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+</body>
+</html>
